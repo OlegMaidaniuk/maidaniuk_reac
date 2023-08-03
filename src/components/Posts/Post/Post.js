@@ -1,4 +1,5 @@
-import {useState} from "react/index";
+import {useState} from "react";
+import {PostDetail} from "../PostDetail/PostDetail";
 
 const Post = ({post}) => {
     const [isShow, setIsShow] = useState(false);
@@ -9,6 +10,10 @@ const Post = ({post}) => {
             <div>title:{title}</div>
             {/*<button onClick={()=>setIsShow(!isShow)}>{isShow?'Hide':'Show'}</button>*/}
             <button onClick={()=>setIsShow(prev=>!prev)}>{isShow?'Hide':'Show'}</button>
+
+            {
+                isShow&& <PostDetail post={post}/>
+            }
         </div>
     );
 };
