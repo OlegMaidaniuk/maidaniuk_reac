@@ -1,0 +1,70 @@
+# drop table cars;
+create table users
+(
+    id int not null auto_increment,
+    name varchar(255) not null,
+    age int not null,
+    gender varchar(6) not null,
+    primary key (id)
+);
+insert into users values (null, 'cocos', 12,'female');
+
+select * from users;
+select id, gender from users;
+select * from users where name='max';
+select * from users where name like 'o%';
+select * from users where name like '%o%';
+select * from users where name like '%a';
+select * from users where name like '__n%';
+
+select * from users where age=20;
+select * from users where age!=20;
+
+select * from users where age between 20 and 30;
+select * from users where age not between 20 and 30;
+
+select * from users where age > 25;
+select * from users where age < 25;
+select * from users where age >= 20;
+select * from users where age <= 25;
+
+select * from users where age in (25, 15, 30);
+
+select * from users where age = 25 or (age=30 and name='nazar');
+
+select * from users where length(name)=4;
+select * from users where length(name)>4;
+select * from users where length(name)<4;
+select * from users where length(name)>=4;
+select * from users where length(name)>=4;
+
+select * from users;
+select * from users order by id asc;
+select * from users order by id desc;
+select * from users order by name;
+
+select * from users limit 5;
+select * from users limit 5 offset 5;
+select * from users limit 5 offset 10;
+select * from users limit 5 offset 15;
+select * from users limit 5 offset 20;
+
+select * from users where age<30 order by age limit 2;
+select * from users where age<30 order by age limit 4;
+select * from users where age<30 order by age limit 6;
+select * from users where age<30 order by age limit 8;
+select * from users where age<30 order by age limit 10;
+
+# min()
+# max()
+# avg()
+# count()
+# sum()
+select * from users order by age desc limit 1;
+select age from users order by age desc limit 1;
+
+select max(age) from users;
+select max(age) as maxAge from users;
+select min(age) as minAge from users;
+select sum(age) as sumAge from users;
+select count(*) from users;
