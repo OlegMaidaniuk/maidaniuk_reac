@@ -1,0 +1,55 @@
+use userrrrr;
+drop table cities;
+create table citiess
+(
+id int primary key auto_increment,
+city varchar(20) not null
+);
+drop table userrss;
+create table userrss
+(
+    id      int primary key auto_increment,
+    name    varchar(20) not null,
+    age     int         not null,
+    city_id int         null ,
+    foreign key (city_id) references citiess (id)
+);
+insert into citiess values (null,'Chop');
+insert into userrss values (null, 'Panas', 41, 1);
+
+select * from userrss;
+select * from citiess;
+
+select * from userrss join citiess c on c.id = userrss.city_id;
+select * from userrss join citiess c on c.id = userrss.city_id;
+select userrss.*,city from userrss join citiess on city_id = citiess.id;
+select * from userrss left join citiess c on c.id = userrss.city_id;
+
+select * from userrss right join citiess c on c.id = userrss.city_id;
+select * from userrss cross join citiess c on c.id = userrss.city_id;
+
+select * from userrss join citiess c on c.id = userrss.city_id where city='Kyiv';
+select * from userrss join citiess c on c.id = userrss.city_id where userrss.id='4';
+
+select * from client join application a on client.idClient = a.Client_idClient
+join department d on d.idDepartment = client.Department_idDepartment;
+
+select distinct name from userrss;
+select * from userrss order by age desc limit 2;
+
+(select * from userrss order by age desc limit 2)
+union
+(select * from userrss order by age limit 2);
+
+select * from userrss where name='panas' or name='Marina';
+
+select * from citiess where id in (select city_id from userrss where name='panas' or name='Marina' or name='Mykola');
+select * from citiess where id in (select city_id from userrss where name in ('panas', 'Marina', 'Mykola'));
+select * from citiess where id in (select city_id from userrss where name not in ('panas', 'Marina', 'Mykola'));
+
+select * from userrss join citiess c on c.id = userrss.city_id where city='Kyiv';
+select * from userrss join citiess c on c.id = userrss.city_id where city='Kyiv';
+select * from citiess where id in (2,1,3);
+
+select * from cars;
+select count(*) as count, model from cars group by model order by  count desc limit 1;
