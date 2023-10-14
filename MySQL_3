@@ -1,0 +1,25 @@
+use userrrrr;
+create table usersss
+(
+    id int primary key auto_increment,
+    username varchar(20) not null,
+    password varchar(20) not null
+);
+
+create table profile
+(
+    id      int auto_increment primary key,
+    name    varchar(20)  not null,
+    surname varchar(20)  not null,
+    photo   varchar(255) null,
+    phone   varchar(10)  not null,
+    user_id int null unique,
+    foreign key (user_id) references users (id)
+);
+
+select *
+from users
+         join profile p on users.id = p.user_id;
+select users.id, username, password, name, surname, photo, phone
+from users
+         join profile p on users.id = p.user_id;
